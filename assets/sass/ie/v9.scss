@@ -1,0 +1,58 @@
+@import '../vars';
+@import '../mixins';
+
+/*
+	Photon by Pixelarity
+	pixelarity.com @pixelarity
+	License: pixelarity.com/license
+*/
+
+/* Header */
+
+	#header {
+		background-image: none;
+		filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr="#{$color-accent3-alt}", endColorStr="#{$color-accent6-alt}", GradientType=1);
+		position: relative;
+
+		&:before {
+			background-image:		url('../images/overlay2.png'),		url('../images/overlay3.svg');
+			background-position:	top left,							center center;
+			background-size:		auto,								cover;
+			content: '';
+			height: 100%;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+
+		> * {
+			position: relative;
+			z-index: 1;
+		}
+	}
+
+/* Footer */
+
+	#footer {
+		background-image: none;
+		filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr="#{$color-accent6-alt}", endColorStr="#{$color-accent3-alt}", GradientType=1);
+		position: relative;
+
+		&:before {
+			background-image:		url('../images/overlay2.png'),		url('../images/overlay4.svg');
+			background-position:	top left,							center center;
+			background-size:		auto,								cover;
+			content: '';
+			height: 100%;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+
+		> * {
+			position: relative;
+			z-index: 1;
+		}
+	}
