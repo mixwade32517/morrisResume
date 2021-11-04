@@ -1,0 +1,839 @@
+/*!
+ * Start Bootstrap - Freelancer Bootstrap Theme (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+$font-family-01: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif, "微軟正黑體"
+$font-family-02: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif, "微軟正黑體"
+$a-color: #0099fe
+$sec-color: #3FC1C9
+$bg-linear: linear-gradient(90deg, #8125d5, #26d3c3)
+//linear-gradient(90deg, #05b9a0, #269cd3)
+$theme-c: #6d70d5 //#6adaac
+body
+  overflow-x: hidden
+  font-family: $font-family-01
+  letter-spacing: 3px
+
+p
+  font-size: 18px
+  line-height: 1.8em
+  &.small
+    font-size: 16px
+
+a,
+a:hover,
+a:focus,
+a:active,
+a.active
+  outline: 0
+  color: $a-color
+
+h1, h2, h3, h4, h5, h6
+  text-transform: uppercase
+  font-family: $font-family-02
+  font-weight: 700
+
+h1.brand
+  margin: 0
+  font-size: 1em
+
+hr
+  &.star-light,&.star-primary,&.star-light2
+    margin: 25px auto 30px
+    padding: 0
+    max-width: 250px
+    border: 0
+    border-top: solid 3px
+    text-align: center
+  &.star-light:after,
+  &.star-primary:after,
+  &.star-light2:after
+    content: "\f005"
+    display: inline-block
+    position: relative
+    top: -.8em
+    padding: 0 0.25em
+    font-family: FontAwesome
+    font-size: 1.8em
+  &.star-light, &.star-light2
+    border-color: $sec-color
+  &.star-light:after
+    color: $sec-color
+    background-color: #eeeeee
+  &.star-light2:after
+    color: $sec-color
+    background-color: #fff
+  &.star-primary
+    border-color: $sec-color
+    &:after
+      color: $sec-color
+      background-color: #f5f5f5
+
+
+.img-centered
+  margin: 0 auto
+
+.btn-default
+  padding: 10px 15px
+  color: #ffffff
+  background-color: #95a5a6
+  border-color: #95a5a6
+  font-size: 15px
+  &:hover
+    color: #ffffff
+    background-color: #798d8f
+    border-color: #74898a
+
+/* define bootstrap 5 columns */
+.col-xs-1-5,
+.col-sm-1-5,
+.col-md-1-5,
+.col-lg-1-5
+  position: relative
+  min-height: 1px
+  padding-right: 10px
+  padding-left: 10px
+
+.col-xs-1-5
+  width: 20%
+  float: left
+
+@media (min-width: 768px)
+  .col-sm-1-5
+    width: 20%
+    float: left
+
+@media (min-width: 992px)
+  .col-md-1-5
+    width: 20%
+    float: left
+
+@media (min-width: 1200px)
+  .col-lg-1-5
+    width: 20%
+    float: left
+
+header
+  text-align: center
+  color: #fff
+  background-image: $bg-linear
+  height: 100vh
+  overflow: hidden
+  .header-bg
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background-position: top center
+    background-size: cover
+    background-repeat: no-repeat
+    background-image: url("../img/header-bg.jpg")
+    opacity: .1
+    background-attachment: fixed
+  .container
+    padding-top: 235px
+    padding-bottom: 50px
+  img
+    display: block
+    margin: 0 auto 20px
+  .intro-text
+    .name
+      display: block
+      font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif
+      font-size: 2em
+      font-weight: normal
+    .skills
+      display: block
+      margin: 20px 0 0 0
+      font-size: 1.25em
+      font-weight: 300
+
+.list-inline
+  margin: 20px 0
+
+@media(min-width: 768px)
+  header
+    .container
+      padding-top: 235px
+      padding-bottom: 100px
+    .intro-text .name
+      font-size: 5em
+    .intro-text .skills
+      font-size: 1.75em
+
+@media(min-width: 768px)
+  .navbar-fixed-top
+    padding: 15px 0
+    +transition(padding .3s)
+    .navbar-brand
+      font-size: 2em
+      +transition(all .3s)
+    &.navbar-shrink
+      padding: 10px 0
+      background-color: #fff
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .11)
+      .navbar-brand
+        font-size: 1.5em
+        color: #34495e
+        &:hover
+          color: $a-color
+      .navbar-nav
+        > li > a
+          color: #34495e
+          &:hover
+            color: $a-color
+            border-bottom: none
+        > li.active > a
+          color: $a-color
+
+
+.navbar
+  text-transform: uppercase
+  font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif
+  font-weight: 700
+  a:focus
+    outline: 0
+  .navbar-nav
+    letter-spacing: 1px
+    li
+      a:focus
+        outline: 0
+
+.navbar-default,
+.navbar-inverse
+  border: 0
+  background-color: transparent
+
+.navbar-fixed-top
+  &.navbar-shrink
+    background-color: #fff
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.11)
+    .navbar-brand
+      font-size: 1.5em
+      color: #34495e
+      &:hover
+        color: $a-color
+    .navbar-nav
+      > li > a
+        color: #34495e
+        &:hover
+          color: $a-color
+          border-bottom: none
+      > li.active > a
+        color: $a-color
+
+section
+  padding: 100px 0
+  h2
+    margin: 0
+    font-size: 3em
+    color: #353744
+  &.success
+    color: #10423E
+    background: #d5eeeb
+  &.port-section
+    background: #f3f5f5
+  /*about*/
+  &.about-section
+    h2
+      margin: 0 0 20px 0
+      color: #353744
+    p
+      margin: 0
+      font-size: 14px
+      color: #353744
+      text-align: justify
+    strong
+      color: $a-color
+    .skill-title
+      margin: 35px 0 20px 0
+      color: #353744
+      text-align: center
+      font-size: 24px
+    ul.skills
+      margin: 0
+      padding: 0
+      list-style: none
+      text-align: center
+      li
+        text-align: center
+        .skill-rate
+          display: inline-block
+          margin: 5px 0 0 0
+          color: #353744
+
+.btn-scroll-down
+  position: absolute
+  bottom: 0%
+  left: 50%
+  z-index: 2
+  display: inline-block
+  +transform(translate(0, -50%))
+  color: #fff
+  text-decoration: none
+  +transition(opacity, 0.3s)
+  &:hover
+    opacity: 0.5
+  span
+    position: absolute
+    top: 0
+    left: 50%
+    width: 24px
+    height: 24px
+    margin-left: -12px
+    border-left: 1px solid #fff
+    border-bottom: 1px solid #fff
+    +transform(rotate(-45deg))
+    +animation(sdb 2s infinite)
+    box-sizing: border-box
+
+@-webkit-keyframes sdb
+  0%
+    -webkit-transform: rotate(-45deg) translate(0, 0)
+
+  20%
+    -webkit-transform: rotate(-45deg) translate(-10px, 10px)
+
+  40%
+    -webkit-transform: rotate(-45deg) translate(0, 0)
+
+@keyframes sdb
+  0%
+    transform: rotate(-45deg) translate(0, 0)
+
+  50%
+    transform: rotate(-45deg) translate(-10px, 10px)
+
+  100%
+    transform: rotate(-45deg) translate(0, 0)
+
+
+.chart
+  position: relative
+  display: inline-block
+  color: #353744
+  font-size: 14px
+  text-align: center
+  canvas
+    position: absolute
+    top: 0
+    left: 0
+
+#timeline
+  position: relative
+  padding: 2em 0
+  margin-top: 2em
+  margin-bottom: 2em
+  &::before
+    /* this is the vertical line */
+    display: block
+    content: ''
+    position: absolute
+    top: 0
+    left: 18px
+    height: 100%
+    width: 4px
+    background: #d7e4ed
+
+@media only screen and (min-width: 1170px)
+  #timeline
+    margin-top: 3em
+    margin-bottom: 3em
+    &::before
+      left: 50%
+      margin-left: -2px
+
+%timeblock-y
+  position: absolute
+  top: -5px
+  display: inline-block
+  font-size: 18px
+  font-weight: 700
+  min-width: 137px
+.timeline-block
+  position: relative
+  margin: 2em 0
+  &:after
+    content: ""
+    display: table
+    clear: both
+  &:first-child
+    margin-top: 0
+  &:last-child
+    margin-bottom: 0
+
+  .timeline-year
+    &.right
+      strong
+        @extend %timeblock-y
+        margin-left: 30px
+        color: #353744
+    &.left
+      strong
+        @extend %timeblock-y
+        margin-left: -144px
+        color: #353744
+
+
+.timeline-year
+  background: $theme-c
+  position: absolute
+  top: 15px
+  left: 0
+  width: 14px
+  height: 14px
+  border-radius: 50%
+  box-shadow: 0 0 0 2px white, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 2px rgba(0, 0, 0, 0.05)
+
+@media only screen and (min-width: 1170px)
+  .timeline-block
+    margin: 4em 0
+    &:first-child
+      margin-top: 0
+    &:last-child
+      margin-bottom: 0
+
+@media only screen and (max-width: 1169px)
+  .timeline-block
+    .timeline-year
+      margin-left: 4px
+      &.right,&.left
+        strong
+          display: block
+          font-size: 1.2rem
+          font-weight: 700
+          margin-left: -5px
+          margin-top: -40px
+          background: #fff
+
+@media only screen and (min-width: 1170px)
+  .timeline-year
+    width: 14px
+    height: 14px
+    left: 50%
+    margin-left: -7px
+    /* Force Hardware Acceleration in WebKit */
+    -webkit-transform: translateZ(0)
+    -webkit-backface-visibility: hidden
+
+.timeline-content
+  position: relative
+  margin-left: 60px
+  background: #ebebeb
+  border-radius: 0.25em
+  box-shadow: 0 3px 0 #d7e4ed
+  display: inline-block
+  &:after
+    content: ''
+    display: table
+    clear: both
+  &:before
+    content: ''
+    position: absolute
+    top: 16px
+    right: 100%
+    height: 0
+    width: 0
+    border: 10px solid transparent
+    border-right: 10px solid $theme-c
+
+  .c-name
+    margin: 0
+    padding: 15px
+    background-color: $theme-c
+    border-radius: 0.25em 0.25em 0 0
+    text-align: left
+    color: #fff
+    font-size: 16px
+    text-transform: initial
+    font-weight: normal
+  .c-title
+    margin: 15px
+    list-style: none
+    font-size: 16px
+    color: #353744
+  ul.c-works
+    margin: 10px 0
+    padding: 0 20px 0 30px
+    font-size: 14px
+    color: #353744
+    li
+      line-height: 1.8em
+  .percent
+    font-size: 2.5rem
+    font-weight: 300
+  h5
+    font-size: 1rem
+
+@media only screen and (min-width: 1170px)
+  .timeline-content
+    margin-left: 9px
+    margin-top: -10px
+    width: 45%
+    &:before
+      top: 16px
+      left: 100%
+      border-color: transparent
+      border-left-color: $theme-c
+
+  .timeline-block
+    &:nth-child(even)
+      .timeline-content
+        float: right
+        &:before
+          top: 16px
+          left: auto
+          right: 100%
+          border-color: transparent
+          border-right-color: $theme-c
+
+@media screen and (min-width: 320px) and (max-width: 768px)
+  #timeline::before
+    left: 10px
+  .timeline-content
+    margin-left: 30px
+  .timeline-block
+    margin: 3em 0
+
+/* Data anime */
+
+[data-anime]
+  opacity: 0
+  transition: .3s
+  &.animate
+    opacity: 1
+    transform: translate3d(0, 0, 0)
+
+[data-anime-left]
+  opacity: 0
+  transform: translate3d(-40px, 0, 0)
+  transition: .3s
+  &.animate
+    opacity: 1
+    transform: translate3d(0, 0, 0)
+
+[data-anime-right]
+  opacity: 0
+  transform: translate3d(40px, 0, 0)
+  transition: .3s
+  &.animate
+    opacity: 1
+    transform: translate3d(0, 0, 0)
+
+section
+  &.about-section
+    .learn-list
+      padding: 0
+      list-style: none
+      text-align: right
+      color: #353744
+    .learn-list,.learn-list2
+      li
+        line-height: 1.5em
+        margin: 0 0 10px 0
+    .learn-list,.learn-list2
+      strong
+        color: $a-color
+    .learn-list2
+      padding: 0
+      list-style: none
+      color: #353744
+  .success
+    p
+      text-align: justify
+@media screen and (min-width: 320px) and (max-width: 768px)
+  section
+    &.about-section
+      .learn-list
+        text-align: left
+
+
+@media(max-width: 767px)
+  section
+    padding: 75px 0
+    &.first
+      padding-top: 75px
+
+#portfolio
+  .portfolio-item
+    right: 0
+    margin: 0 0 15px
+    .portfolio-link
+      display: block
+      position: relative
+      margin: 0 auto
+      max-width: 360px
+      .caption
+        position: absolute
+        width: 100%
+        height: 100%
+        opacity: 0
+        background-color: rgba(0, 0, 0, .3)
+        +transition(all ease .5s)
+        &:hover
+          opacity: 1
+          box-shadow: 0 3px 6px #aaa
+        .caption-content
+          position: absolute
+          top: 50%
+          width: 100%
+          height: 20px
+          margin-top: -12px
+          text-align: center
+          font-size: 20px
+          color: #fff
+          text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.35)
+          h3
+            font-size: 22px
+          .content-cate
+            font-size: 18px
+          i
+            margin-top: -12px
+          h3,h4
+            margin: 0
+  *
+    z-index: 2
+    border-radius: 4px
+
+@media(min-width: 767px)
+  #portfolio .portfolio-item
+    margin: 0 0 30px
+
+.btn-outline
+  margin-top: 15px
+  border: 1px solid #fff
+  font-size: 20px
+  color: #fff
+  background: 0 0
+  transition: all .3s ease-in-out
+  &:hover,
+  &:focus,
+  &:active,
+  &.active
+    color: #27adba
+    background: #fff
+
+.floating-label-form-group
+  position: relative
+  margin-bottom: 0
+  padding-bottom: .5em
+  border-bottom: 1px solid #eee
+  input, textarea
+    z-index: 1
+    position: relative
+    padding-right: 0
+    padding-left: 0
+    border: 0
+    border-radius: 0
+    font-size: 1.5em
+    background: 0 0
+    box-shadow: none !important
+    resize: none
+  label
+    display: block
+    z-index: 0
+    position: relative
+    top: 2em
+    margin: 0
+    font-size: .85em
+    line-height: 1.764705882em
+    vertical-align: middle
+    vertical-align: baseline
+    opacity: 0
+    +transition(top .3s ease, opacity .3s ease)
+
+//.floating-label-form-group::not(:first-child)
+//  padding-left: 14px
+//  border-left: 1px solid #eee
+
+
+.floating-label-form-group-with-value label
+  top: 0
+  opacity: 1
+
+.floating-label-form-group-with-focus label
+  color: #18bc9c
+
+form .row:first-child .floating-label-form-group
+  border-top: 1px solid #eee
+
+footer
+  color: #fff
+  h3
+    margin-bottom: 30px
+  .footer-above
+    padding-top: 50px
+    background-image: $bg-linear
+  .footer-col
+    margin-bottom: 50px
+  .footer-below
+    padding: 25px 0
+    background: #f3f5f5
+    color: #34495e
+
+.btn-social
+  display: inline-block
+  width: 50px
+  height: 50px
+  border-radius: 100%
+  text-align: center
+  font-size: 20px
+  line-height: 45px
+
+.btn:focus,
+.btn:active,
+.btn.active
+  outline: 0
+
+.scroll-top
+  z-index: 1049
+  position: fixed
+  right: 2%
+  bottom: 2%
+  width: 50px
+  height: 50px
+  .btn
+    width: 50px
+    height: 50px
+    border-radius: 100%
+    font-size: 20px
+    line-height: 28px
+    background-color: #10423e
+    border-color: #10423e
+    &:focus
+      outline: 0
+
+.portfolio-modal
+  .modal-content
+    padding: 100px 0
+    min-height: 100%
+    border: 0
+    border-radius: 0
+    text-align: center
+    background-clip: border-box
+    +box-shadow(none)
+    ptext-align: justify
+    strongcolor: $sec-color
+    h2
+      margin: 0 0 20px 0
+      font-size: 3em
+      color: #34495e
+    h3.app-subtitle
+      text-align: left
+      color: #364F6B
+      margin: 1.5em 0 0.5em 0
+    h4
+      display: table
+      padding: 13px
+      margin: 1.5em 0
+      text-align: left
+      color: #364F6B
+      background-color: #EEECEC
+      border-radius: 4px
+    img
+      margin-bottom: 30px
+    .item-details
+      margin: 30px 0
+    p
+      text-align: justify
+    ul
+      padding-left: 10px
+      margin-left: 20 px
+      ol,li
+        text-align: left
+        //font-size: 18px
+        line-height: 1.8em
+  .close-modal
+    position: absolute
+    top: 25px
+    right: 25px
+    width: 75px
+    height: 75px
+    background-color: transparent
+    cursor: pointer
+    &:hover
+      opacity: .3
+    .lr
+      z-index: 1051
+      width: 1px
+      height: 75px
+      margin-left: 35px
+      background-color: #364F6B
+      +transform(rotate(45deg))
+      .rl
+        z-index: 1052
+        width: 1px
+        height: 75px
+        background-color: #364F6B
+        +transform(rotate(90deg))
+  .modal-backdrop
+    display: none
+    opacity: 0
+  .content-list
+    padding: 0 0 0 20px
+    font-size: 18px
+    line-height: 1.8em
+    text-align: left
+    word-break: break-all
+    color: #34495e
+  .block-l,.block-r
+    float: left
+    width: 48%
+    margin: auto 1%
+/*menuSwitch*/
+.menuSwitch
+  text-align: center
+  margin: 45px 0 45px
+  ul
+    padding-left: 0
+    li
+      list-style-type: none
+      display: inline-block
+      padding: 10px 20px
+      border-radius: 4px
+      cursor: pointer
+      color: #7f8c8d
+      font-size: 16px
+      +transition(background-color 0.3s ease-in)
+      &:hover
+        background-color: $theme-c
+        color: white
+      .cat-active
+        background-color: $theme-c
+        color: white
+
+/*community*/
+.teamInfo
+  overflow: hidden
+  margin-bottom: 80px
+
+.imgWrp
+  height: 190px
+  overflow: hidden
+  cursor: pointer
+  opacity: 0.5
+  +transition(all .2s linear)
+  &:hover
+    height: 220px
+    opacity: 1
+    margin-top: -15px
+
+
+.notice
+  color: #ff2244
+.custom-table
+  width: 100%
+  thead
+    color: #fff
+    background: linear-gradient(90deg, rgb(53, 59, 213), rgb(54, 116, 211))
+  //border: 1px solid #555555
+  tr
+    height: 40px
+    //border-bottom: 1px solid #555555
+    &:nth-child(even)
+      background: #eee
+    th
+      text-align: center
+      font-size: 1.2em

@@ -1,0 +1,72 @@
+/*------  共用區public ------ */
+.float-left, .pull-left
+  float: left
+
+.float-right, .pull-right
+  float: right
+
+.text-left
+  text-align: left !important
+
+.row-2
+  margin-right: -15px
+  margin-left: -15px
+
+.row-padding
+  padding-right: 15px
+  padding-left: 15px
+
+.no-p
+  padding: 0
+
+.no-pl
+  padding-left: 0
+
+.no-pr
+  padding-right: 0
+
+.no-ml
+  margin-left: 0
+
+.no-mr
+  margin-right: 0
+
+.mb-10
+  margin-bottom: 20px
+
+.notice
+  color: $notice-err
+//font-weight: 500
+.ico-wt
+  width: 13px
+
+button:focus
+  outline: none
+
+.form-control:focus
+  border-color: rgba($theme-main, .4)
+  box-shadow: 0 0 0 0.1rem rgba($theme-main, .3)
+// 結帳頁表格顏色
+.table-bg
+  background-color: $theme-main
+  color: #ffffff
+
+.w-60
+  width: 60%
+
+[v-cloak]
+  display: none
+
+.tick
+  +tick($tick-color: #fff)
+
+.tick-check
+  +tick($tick-color: #006400)
+
+.no-scroll
+  overflow-y: hidden
+  height: 100%
+
+.shopping-cart, .shopping-cart-m
+  position: relative
+  display: block

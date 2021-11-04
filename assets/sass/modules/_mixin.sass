@@ -1,0 +1,542 @@
+//mixin
+@charset "UTF-8"
+
+// bacchus
+//input-spc-1 width             : 439px
+//input-spc-1 width (768-1030)  : 349px
+//medium-c1 width (768-1030)    : 349px
+@mixin input-s1($spc-width: 434px)
+  width: $spc-width
+  //defalut: 439px
+  max-width: 100%
+  height: $defHt
+// 綜合櫃台 顏色
+@mixin color-bk
+  &.cb-yellow
+    background: #fffba1
+  &.cb-purple
+    background: #ae8dc3
+  &.cb-green
+    background: #7cbd64
+  &.cb-pink
+    background: #ffddb3
+  &.cb-gray
+    background: #bfbfbf
+  &.cb-brown
+    background: #dcbe88
+  &.cb-blueGreen
+    background: #06eed5
+  &.cb-grayGreen
+    background: #008148
+  &.cb-sexyBlue
+    background: #19647E
+  &.cb-darkGreen
+    background: #00542f
+  &.cb-sexyYellow
+    background: #848009
+  &.cb-sexyGreen
+    background: #556b2f
+  &.cb-sexyRed
+    background: rgba(255, 33, 95, 0.77)
+  &.cb-default
+    background: #c0d6ee
+  &.cd-sexyPurple
+    background: #4B3F72 !important
+  &.active
+    border: 2px solid #ff0000
+// 底部線
+@mixin bottomAfterLine($lineLeftPx,$lineBottomPx,$lineWidthPx,$lineHeightPx,$lineBackground,$lineMargin-left,$lineMargin-bottom)
+  content: ""
+  position: absolute
+  left: $lineLeftPx
+  //15px
+  bottom: $lineBottomPx
+  //0px
+  width: $lineWidthPx
+  //25%
+  height: $lineHeightPx
+  //2px
+  background: $lineBackground
+  //$webThemeColor
+  margin-left: $lineMargin-left
+  //-15px
+  margin-bottom: $lineMargin-bottom
+//10px
+
+// 六角形
+  // $hexagonWidth             六角形的寬
+  // $hexagonHeight            六角形的高(不影響六角形形狀)
+  // $hexagonBk                六角形的顏色
+  // 後面的文字                  初值
+@mixin hexagon($hexagonWidth, $hexagonHeight, $hexagonBk)
+  width: $hexagonWidth
+  //100px
+  height: $hexagonHeight
+  //55px
+  background: $hexagonBk
+  //#eeeeee
+  position: relative
+  &:before
+    content: ""
+    position: absolute
+    top: -$hexagonWidth/4
+    //-25px
+    left: 0
+    width: 0
+    height: 0
+    border-left: $hexagonWidth/2 solid transparent
+    //50px
+    border-right: $hexagonWidth/2 solid transparent
+    //50px
+    border-bottom: $hexagonWidth/4 solid $hexagonBk
+  //25px
+  &:after
+    content: ""
+    position: absolute
+    bottom: -$hexagonWidth/4
+    left: 0
+    width: 0
+    height: 0
+    border-left: $hexagonWidth/2 solid transparent
+    //50px
+    border-right: $hexagonWidth/2 solid transparent
+    //50px
+    border-top: $hexagonWidth/4 solid $hexagonBk
+//25px
+
+
+/***** wsc3 *****/
+// 圖片hover 效果
+@mixin img-hover-effect($hover-color: rgba(#000,.3),$hover-opacity: 1)
+  .goods-pic
+    cursor: pointer
+    text-align: center
+    position: relative
+    margin: 0 auto
+    overflow: hidden
+    background-color: $hover-color
+    opacity: $hover-opacity
+    .hover-text
+      text-decoration: none
+      text-transform: uppercase
+      //text-shadow: rgba(0, 0, 0, 0.7) 1px 1px 5px
+      color: #fff
+      font-weight: 400
+      font-size: 28px
+      letter-spacing: .1em
+      position: absolute
+      display: block
+      top: 40%
+      left: 0
+      text-align: center
+      filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0)
+      opacity: 0
+      z-index: 2
+      width: 100%
+      height: 100%
+      .sub-text
+        display: block
+        text-transform: none
+        font-style: italic
+        font-size: 80%
+        color: rgba(255, 255, 255, 0.7)
+        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0)
+        opacity: 0
+        +transition-property(all)
+        +transition-delay(0.2s)
+        +transition-duration(0.9s)
+    &:hover
+      .hover-text
+        filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false)
+        opacity: 1
+        +transform(scale(1, 1))
+        +transition-property(all)
+        +transition-duration(0.6s)
+      .sub-text
+        filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false)
+        opacity: 1
+      img
+        +transform(scale(1, 1))
+        background-position: top top
+        -webkit-filter: grayscale(0.4) blur(2px)
+        filter: grayscale(0.4) blur(2px)
+        +transition-property(all)
+        +transition-duration(0.8s)
+        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50)
+        opacity: 0.5
+    img
+      width: 100%
+      height: auto
+      display: block
+      margin: 0 auto
+      display: inline-block
+      text-align: center
+      +transform(scale(1.09, 1.09))
+      +transition-property(all)
+      +transition-duration(0.4s)
+
+// 漢堡變成 x(關閉)
+@mixin transition($value...)
+  -webkit-transition: $value
+  -moz-transition: $value
+  -ms-transition: $value
+  transition: $value
+
+@mixin transform($value...)
+  -webkit-transform: $value
+  -moz-transform: $value
+  -ms-transform: $value
+  transform: $value
+
+@mixin hamburger-open($slowly: all .2s ease, $hamOpenBg: rgba(18, 59, 61, 0.7))
+  .hamburger
+    position: fixed
+    top: 20px
+    right: 0
+    cursor: pointer
+    z-index: 1000
+    padding: 10px 15px 5px
+    span
+      vertical-align: middle
+    .bars
+      display: block
+      position: relative
+      width: 35px
+      height: 5px
+      background-color: $hamOpenBg
+      @include transition($slowly)
+      &:before, &:after
+        position: absolute
+        content: " "
+        width: 100%
+        height: 5px
+        background-color: $hamOpenBg
+        @include transition($slowly)
+      &:before
+        top: 10px
+      &:after
+        bottom: 10px
+
+  .open .hamburger .bars
+    background-color: transparent
+    @include transition($slowly)
+    &::before
+      top: 0
+      @include transform(rotate(-45deg))
+    &::after
+      bottom: 0
+      @include transform(rotate(45deg))
+
+// 選擇商品樣式 & 顏色
+@mixin tick($tick-color: #fff)
+  //+img-hover-effect(#717171)
+  &.color-picker
+    opacity: .5
+  display: block
+  position: relative
+  &:before
+    opacity: 1
+    display: block
+    position: absolute
+    bottom: 9px
+    left: 4px
+    content: ''
+    width: 10px
+    height: 3px
+    background: $tick-color
+    visibility: hidden
+    +transform(rotate(45deg))
+    +animation(shortTick 0.1s forwards ease)
+    transform-origin: left top
+    +animation-delay(0.3s)
+  &:after
+    opacity: 1
+    display: block
+    position: absolute
+    bottom: 2px
+    left: 8px
+    content: ''
+    width: 20px
+    height: 3px
+    background: $tick-color
+    //#006400
+    visibility: hidden
+    +transform(rotate(-45deg))
+    +animation(longTick 0.3s forwards ease)
+    transform-origin: left top
+    +animation-delay(0.6s)
+  @-webkit-keyframes shortTick
+    0%
+      width: 0px
+      visibility: visible
+
+    100%
+      width: 10px
+      visibility: visible
+  @-moz-keyframes shortTick
+    0%
+      width: 0px
+      visibility: visible
+    100%
+      width: 10px
+      visibility: visible
+  @-o-keyframes shortTick
+    0%
+      width: 0px
+      visibility: visible
+    100%
+      width: 10px
+      visibility: visible
+  @-ms-keyframes shortTick
+    0%
+      width: 0px
+      visibility: visible
+    100%
+      width: 10px
+      visibility: visible
+  @-webkit-keyframes longTick
+    0%
+      width: 0px
+      visibility: visible
+    100%
+      width: 20px
+      visibility: visible
+  @-moz-keyframes longTick
+    0%
+      width: 0px
+      visibility: visible
+    100%
+      width: 20px
+      visibility: visible
+  @-o-keyframes longTick
+    0%
+      width: 0px
+      visibility: visible
+    100%
+      width: 20px
+      visibility: visible
+  @-ms-keyframes longTick
+    0%
+      width: 0px
+      visibility: visible
+    100%
+      width: 20px
+      visibility: visible
+
+// 樣式一(不完整:https://codepen.io/kjbrum/pen/wBBLXx?q=button+hover&limit=all&type=type-pens)
+@mixin btn-s1($bgcolor: rgba($theme-main,.3),$color: #000)
+  //position: relative
+  //color: rgba(#ffffff,.5)
+  &:before, &:after
+    position: absolute
+    top: 50%
+    content: ''
+    width: 10px
+    height: 10px
+    background-color: $bgcolor
+    border-radius: 50%
+  &:before
+    left: -20px
+    -webkit-transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%)
+  &:after
+    right: -20px
+    -webkit-transform: translate(50%, -50%)
+    transform: translate(50%, -50%)
+  &:hover
+    color: $color
+    border: rgba(#fff, .3)
+    &:before
+      -webkit-animation: criss-cross-left 0.8s both
+      animation: criss-cross-left 0.8s both
+      -webkit-animation-direction: alternate
+      animation-direction: alternate
+    &:after
+      -webkit-animation: criss-cross-right 0.8s both
+      animation: criss-cross-right 0.8s both
+      -webkit-animation-direction: alternate
+      animation-direction: alternate
+  @-webkit-keyframes criss-cross-left
+    0%
+      left: -20px
+
+    50%
+      left: 50%
+      width: 20px
+      height: 20px
+
+    100%
+      left: 50%
+      width: 375px
+      height: 375px
+
+  @keyframes criss-cross-left
+    0%
+      left: -20px
+
+    50%
+      left: 50%
+      width: 20px
+      height: 20px
+
+    100%
+      left: 50%
+      width: 375px
+      height: 375px
+
+  @-webkit-keyframes criss-cross-right
+    0%
+      right: -20px
+
+    50%
+      right: 50%
+      width: 20px
+      height: 20px
+
+    100%
+      right: 50%
+      width: 375px
+      height: 375px
+
+  @keyframes criss-cross-right
+    0%
+      right: -20px
+
+    50%
+      right: 50%
+      width: 20px
+      height: 20px
+
+    100%
+      right: 50%
+      width: 375px
+      height: 375px
+// 樣式二(https://codepen.io/szpakoli/pen/ncByJ?editors=0110)
+@mixin btn-s2($bgcolor: rgba($theme-main,.7),$color: #000)
+  &.btn-wrap
+    +transition(border 1s cubic-bezier(0.19, 1, .22, 1), color .6s cubic-bezier(0.19, 1, .22, 1))
+    .btn-txt
+      +transition(border 1s cubic-bezier(0.19, 1, .22, 1), color .6s cubic-bezier(0.19, 1, .22, 1))
+      position: relative
+      z-index: 15
+      &:hover, &:hover .btn-txt
+        border-color: lighten($bgcolor, 70%)
+    &:hover
+      border-color: $bgcolor
+      .btn-mask
+        background: $bgcolor
+        width: 100%
+        left: 0%
+      .btn-txt
+        color: $color
+        transition: 1.5s
+  .btn-mask
+    position: absolute
+    display: block
+    //width: 30px
+    height: 55px
+    background: $bgcolor
+    transition: all .5s
+    left: -55px
+    top: -5px
+    z-index: 10
+
+// 網頁進入移動過場效果
+@mixin fade-animate
+  .fade-sty
+    transition: all ease-out .5s 0s
+  /*.fade-sty:nth-child(even)background:#ff0000color:#fff*/
+  .fade-ani
+    opacity: 0
+    position: relative
+  .fade-up
+    bottom: -50px
+    &.showing
+      bottom: 0px
+      opacity: 1
+  .fade-down
+    top: -50px
+    &.showing
+      top: -0px
+      opacity: 1
+  .fade-left
+    left: -50px
+    &.showing
+      left: -0px
+      opacity: 1
+  .fade-right
+    right: -50px
+    &.showing
+      right: -0px
+      opacity: 1
+  //.fade-ani.showing
+  .fade-in
+    &.showing
+      opacity: 1
+
+@mixin wsc3-checkbox($ckboxColor: #16a085, $ckboxBorder: #555,$rbColor: #16a085, $rbBorder: #16a085)
+  .wsc3-checkbox
+    .label--checkbox, .label--radio
+      position: relative
+      margin-top: 5px
+      margin-bottom: 5px
+      //line-height: 135%
+      cursor: pointer
+    .checkbox
+      position: relative
+      top: -0.1rem
+      margin: 0 .5rem 0 0
+      cursor: pointer
+      &:before
+        +transition(transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75))
+        +transform(rotate(-45deg) scale(0, 0))
+        content: ""
+        position: absolute
+        left: 0.25rem
+        top: 0.165rem
+        z-index: 1
+        width: 0.75rem
+        height: 0.375rem
+        border: 2px solid $ckboxColor
+        border-top-style: none
+        border-right-style: none
+      &:checked:before
+        +transform(rotate(-45deg) scale(1, 1))
+      &:after
+        content: ""
+        position: absolute
+        top: -0.125rem
+        left: -0.05rem
+        width: 1.25rem
+        height: 1.25rem
+        background: #eeeeee
+        border: 1px solid $ckboxBorder
+        cursor: pointer
+    .radio
+      position: relative
+      margin: 0 1rem 0 0
+      cursor: pointer
+      &:before
+        +transition(transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75))
+        +transform(scale(0, 0))
+        content: ""
+        position: absolute
+        top: 0.11rem
+        left: 0.11rem
+        z-index: 1
+        width: 0.5rem
+        height: 0.5rem
+        background: $rbColor
+        border-radius: 50%
+      &:checked:before
+        +transform(scale(1, 1))
+      &:after
+        content: ""
+        position: absolute
+        top: -0.1rem
+        left: -0.125rem
+        width: 1rem
+        height: 1rem
+        background: #fff
+        border: 1px solid $rbBorder
+        border-radius: 50%
