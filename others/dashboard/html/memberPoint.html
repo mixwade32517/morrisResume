@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Member Points</title>
+    <meta content="text/html" charset="UTF-8" http-equiv="Content-Type">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>DashBoard</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!--<link href="../assets/css/modules/reset.css" rel="stylesheet">-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.0.7/theme-chalk/index.css" rel="stylesheet">
+
+    <style>
+        body {
+            padding: 5px;
+            font-size: 16px;
+            color: #5e5e5e;
+            font-family: Microsoft JhengHei,"Helvetica Neue",Arial, Helvetica, sans-serif;
+        }
+        #memberPoint {
+            padding: 20px 10px;
+            margin: 0 auto;
+        }
+        #memberPoint .title {
+            font-size: 1.2em;
+            margin: 5px auto 5px 0;
+            padding-bottom: 10px;
+            letter-spacing: 2px;
+            /*border-bottom: 1px solid #dbdbdb;*/
+            /*width: 70%;*/
+        }
+        #memberPoint .title i{
+            margin: auto 10px auto auto;
+        }
+        .el-tabs__item {
+            font-size: 16px;
+            font-weight: normal;
+        }
+        .choiceDate .date {
+            margin-right: 10px;
+        }
+        .el-table .warning-row {
+            background: oldlace;
+        }
+
+        .el-table .success-row {
+            background: #f0f9eb;
+        }
+
+
+        .el-table .text-right {
+            text-align: right;
+        }
+
+        .space-10 {
+            margin: 10px auto;
+        }
+        .space-20 {
+            margin: 20px auto;
+        }
+        .l-mbPointTotal, .r-mbPointTotal {
+            /*width: 45%;*/
+            margin: auto 2% auto auto;
+            display: inline-block;
+            /*font-size: 1.2em;*/
+            /*border-left: 4px solid #2b542c;*/
+        }
+        .l-mbPointTotal .txt, .r-mbPointTotal .txt{
+            color: #ff4656;
+        }
+        .l-mbPointTotal .amount, .r-mbPointTotal .amount{
+            font-size: 2em;
+        }
+        .ml-5 {
+           margin-right: 5px;
+        }
+        @media screen and (max-width: 766px) {
+
+            #memberPoint .el-date-editor--daterange.el-input__inner {
+                width: 100% !important;
+            }
+            #memberPoint .el-button {
+                width: 100% !important;
+                margin-top: 10px;
+            }
+            .memberPoint .el-date-range-picker.has-sidebar {
+                width: 100% !important;
+            }
+
+            /*#memberPoint .el-date-range-picker.has-sidebar .el-picker-panel__sidebar {*/
+                /*display: none;*/
+            /*}*/
+            .memberPoint .el-picker-panel__sidebar {
+                display: none;
+            }
+            .memberPoint .el-picker-panel__sidebar+.el-picker-panel__body {
+                margin-left: 0 !important;
+            }
+            .memberPoint .el-date-range-picker__header div {
+                font-size: 10px;
+                margin-right: 0;
+                line-height: 18px;
+            }
+            .memberPoint .el-date-range-picker__content.is-right .el-date-range-picker__header div {
+                margin-right: 0;
+                margin-left: 0;
+            }
+            .memberPoint .el-date-table th {
+                padding: 15px 5px 5px 5px;
+
+            }
+            .memberPoint .el-date-range-picker .el-picker-panel__body {
+                min-width: 100%;
+
+            }
+
+        }
+    </style>
+</head>
+<body class="memberPoint">
+<div id="appChoiceDate">
+</div>
+<div id="memberPoint">
+
+    <!-- 日期選擇 -->
+    <template>
+        <div class="choiceDate">
+            <div class="date title">
+                <i class="fa fa-calendar"></i>選擇日期區間</div>
+            <el-date-picker v-model="value7" type="daterange" align="right" unlink-panels range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" :picker-options="pickerOptions2">
+            </el-date-picker>
+            <span>
+                <el-button type="primary" plain>搜尋</el-button>
+            </span>
+        </div>
+    </template>
+
+    <div class="space-20"></div>
+
+    <!-- tabs -->
+    <div class="title">
+        <i class="fa fa-folder-open-o"></i>搜尋結果</div>
+    <template>
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane label="會員積點1" name="first"></el-tab-pane>
+            <el-tab-pane label="會員積點2" name="second">會員積點2-內容</el-tab-pane>
+        </el-tabs>
+    </template>
+
+    <!-- table01 -->
+    <div v-show="activeName == 'first'" class="">
+        <template>
+            <el-table :data="tableData1" height="350" border style="width: 100%" :row-class-name="tableRowClassName">
+                <el-table-column prop="transDate" label="交易日期" width="200" header-align="center">
+                </el-table-column>
+                <el-table-column prop="transPlace" label="交易地點" width="400" header-align="center">
+                </el-table-column>
+                <el-table-column prop="invoiceNum" label="發票號碼" width="200" header-align="center">
+                </el-table-column>
+                <el-table-column prop="transAmount" label="交易金額" width="200" header-align="center" align="right">
+                </el-table-column>
+                <el-table-column prop="pointAmount" label="可積點金額" header-align="center" align="right">
+                </el-table-column>
+            </el-table>
+        </template>
+    </div>
+    <!-- table02 -->
+    <div v-show="activeName == 'second'" class="">
+        <template>
+            <el-table :data="tableData2" height="350" border style="width: 100%" :row-class-name="tableRowClassName">
+                <el-table-column prop="transDate" label="交易日" style="width: 25%"  header-align="center">
+                </el-table-column>
+                <el-table-column prop="status" label="狀態" style="width: 25%"  header-align="center">
+                </el-table-column>
+                <el-table-column prop="description" label="說明" style="width: 25%" header-align="center">
+                </el-table-column>
+                <el-table-column prop="point" label="點數" style="width: 25%" header-align="center" align="right">
+                </el-table-column>
+            </el-table>
+        </template>
+    </div>
+
+    <div class="space-20"></div>
+    <div class="mbPointTotal">
+        <div class="l-mbPointTotal">
+            <span class="">
+                <i class="fa fa-bar-chart"></i>
+                 <span class="txt">目前總消費:</span>
+            </span>
+            <span class="amount">5,000</span>
+        </div>
+        <div class="r-mbPointTotal">
+            <span class="">
+                <i class="fa fa-star-o"></i>
+                 <span class="txt">目前總積點:</span>
+            </span>
+            <span class="amount">4,000</span>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.0.7/index.js"></script>
+<script>
+
+    var memberPoint = new Vue({
+        el:'#memberPoint',
+        data: {
+            // 切換tabs
+            activeName: 'first',
+            // 顯示table
+            tableData1: [{
+                transDate: '2016-05-03',
+                transPlace: '上海市普陀區金沙江路 1518 弄',
+                invoiceNum: 'A1234567789',
+                transAmount: '$1,0000',
+                pointAmount: '$1,000'
+                }, {
+                transDate: '2016-05-03',
+                transPlace: '上海市普陀區金沙江路 1518 弄',
+                invoiceNum: 'A1234567789',
+                transAmount: '$1,0000',
+                pointAmount: '$1,000'
+            }, {
+                transDate: '2016-05-03',
+                transPlace: '上海市普陀區金沙江路 1518 弄',
+                invoiceNum: 'A1234567789',
+                transAmount: '$1,0000',
+                pointAmount: '$1,000'
+            }, {
+                transDate: '2016-05-03',
+                transPlace: '上海市普陀區金沙江路 1518 弄',
+                invoiceNum: 'A1234567789',
+                transAmount: '$1,0000',
+                pointAmount: '$1,000'
+            }, {
+                transDate: '2016-05-03',
+                transPlace: '上海市普陀區金沙江路 1518 弄',
+                invoiceNum: 'A1234567789',
+                transAmount: '$1,0000',
+                pointAmount: '$1,000'
+            }, {
+                transDate: '2016-05-03',
+                transPlace: '上海市普陀區金沙江路 1518 弄',
+                invoiceNum: 'A1234567789',
+                transAmount: '$1,0000',
+                pointAmount: '$1,000'
+            }, {
+                transDate: '2016-05-03',
+                transPlace: '上海市普陀區金沙江路 1518 弄',
+                invoiceNum: 'A1234567789',
+                transAmount: '$1,0000',
+                pointAmount: '$1,000'
+            }],
+            tableData2: [{
+                transDate: '2016-05-03',
+                status: 'VIP',
+                description: '說明',
+                point: '$1,000'
+                }, {
+                transDate: '2016-05-03',
+                status: 'VIP',
+                description: '說明',
+                point: '$1,000'
+            }, {
+                transDate: '2016-05-03',
+                status: 'VIP',
+                description: '說明',
+                point: '$1,000'
+            }, {
+                transDate: '2016-05-03',
+                status: 'VIP',
+                description: '說明',
+                point: '$1,000'
+            }, {
+                transDate: '2016-05-03',
+                status: 'VIP',
+                description: '說明',
+                point: '$1,000'
+            }, {
+                transDate: '2016-05-03',
+                status: 'VIP',
+                description: '說明',
+                point: '$1,000'
+            }, {
+                transDate: '2016-05-03',
+                status: 'VIP',
+                description: '說明',
+                point: '$1,000'
+            }],
+            // 選擇日期區間
+            pickerOptions2: {
+                shortcuts: [{
+                    text: '當天',
+                    onClick(picker) {
+                        const end = new Date();
+                        const start = new Date();
+                        start.setTime(start.getTime());
+                        picker.$emit('pick', [start, end]);
+                    }
+                },{
+                    text: '最近一周',
+                    onClick(picker) {
+                        const end = new Date();
+                        const start = new Date();
+                        start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+                        picker.$emit('pick', [start, end]);
+                    }
+                }, {
+                    text: '最近一個月',
+                    onClick(picker) {
+                        const end = new Date();
+                        const start = new Date();
+                        start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+                        picker.$emit('pick', [start, end]);
+                    }
+                }, {
+                    text: '最近三個月',
+                    onClick(picker) {
+                        const end = new Date();
+                        const start = new Date();
+                        start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+                        picker.$emit('pick', [start, end]);
+                    }
+                }]
+            },
+            value7: ''
+            },
+        methods: {
+            // tabs
+            handleClick(tab, event) {
+//                console.log(tab, event);
+            },
+            //table color
+            tableRowClassName({row, rowIndex}) {
+                if (rowIndex % 2) {
+                    return 'warning-row';
+                }
+                return '';
+            },
+        }
+    })
+</script>
+</html>

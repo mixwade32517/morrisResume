@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>d3Demo_Pie</title>
+</head>
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+    body {
+        font-family: 'Source Sans Pro', sans-serif;
+    }
+    .wrapper {
+        margin-bottom: 50px;
+    }
+
+</style>
+<body>
+
+    <div class="container wrapper">
+
+        <h1 class="page-header">D3 Pie Chart</h1>
+
+        <div class="chart"></div>
+    </div>
+
+</body>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script type="text/javascript">
+    // d3.js 本身沒有作圖的功能，他主要是為我們提供繪圖的資料：將”不適合繪圖的原始資料“ 轉為 ”節點、連線“等適合的繪圖資料
+
+    var width = 400,
+        height = 400,
+        radius = 200,
+        innerRadius = 0,
+        outerRadius = 200,
+        colors = d3.scale.category20()
+    // 是 d3.js 幫我們定義的顏色序列
+
+    var piedata = [
+        {
+            label: 'Bob',
+            value: 50
+        },{
+            label: 'Gerald',
+            value: 50
+        },{
+            label: 'Jennifer',
+            value: 50
+        },{
+            label: 'Lorenzo',
+            value: 50
+        },{
+            label: 'Hillary',
+            value: 50
+        }, {
+            label: 'Jane',
+            value: 50
+        }
+    ]
+
+    // 呼叫 d3 layout的api 其中一個叫pie，回傳他的值
+    // https://scarletsky.github.io/2015/01/04/d3js-learning-2/
+    var pie = d3.layout.pie()
+        .value(function(d) {return d.value; })
+
+    // svg.arc 弧形產生器
+    // innerRadius ＝＝ 內圈 , outerRadius ＝＝ 外圈
+    // var arc = d3.svg.arc().outerRadius(radius)
+    var arc = d3.svg.arc()
+        .innerRadius(innerRadius)
+        .outerRadius(outerRadius)
+
+    //  append 的指令在最後面放入物件或元素
+    //  attr 設定或取得選擇集的屬性
+    //  g 群組化
+    //  enter http://www.oxxostudio.tw/articles/201509/svg-d3-18-enter-update-exit.html
+    // 產生出 <path d = "">
+
+    var myChard = d3.select('.chart').append('svg')
+        .attr('width',width)
+        .attr('height',height)
+        .append('g')
+        .attr('transform', 'translate('+ (width/2) +', '+ (height/2) +')')
+        .selectAll('path').data(pie(piedata))
+        .enter().append('g')
+        .attr('class','slice')
+
+    var slices = d3.selectAll('g.slice')
+        .append('path')
+        .attr('fill',function(d,i){
+            return colors(i);
+        })
+        .attr('d',arc)
+        .on('mouseover',function(){
+            d3.select(this)
+                .style('opacity',0.8)
+        })
+        .on('mouseout', function() {
+            d3.select(this)
+                .style('opacity', 1)
+        })
+
+    var text = d3.selectAll('g.slice')
+        .append('text')
+        .text(function(d) { return d.data.label; }) //slice = d, so we the slice's data.
+        .attr('text-anchor', 'middle')
+        .attr('fill', 'white')
+        .attr('transform', function(d) {
+            d.innerRadius = innerRadius;
+            d.outerRadius = outerRadius;
+            return 'translate('+arc.centroid(d)+')';//puts text at center of slice
+        })
+</script>
+</html>

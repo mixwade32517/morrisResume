@@ -1,0 +1,307 @@
+body
+  font-family: $font-family
+  font-size: $font-default
+  background: #f3f3f3
+  font-weight: 300
+  color: #666666
+a
+  text-decoration: none
+  cursor: pointer
+.space-6
+  margin: 6px auto
+.space-12
+  margin: 12px auto
+.clearfix,.clear
+  clear: both
+// table style
+@mixin css_table($tableWidth: auto)
+  display: table
+  border-collapse: collapse
+  width: $tableWidth
+  border: 1px solid #cccccc
+  &.table-lg
+    .css_th, .css_td
+      padding-top: 10px
+      padding-bottom: 10px
+  .css_thead
+    display: table-header-group
+  .css_tbody
+    display: table-row-group
+  .css_tr
+    display: table-row
+    vertical-align: middle
+    &.text-center
+      th
+        text-align: center
+  .css_th, .css_td
+    display: table-cell
+    border: 1px solid $borderStyle
+    &.padding-top
+      padding-top: 5px
+  .css_th
+    background: #eee
+  //font-weight: bold
+  &.top_none
+    border-top: 0
+  .td-disable
+    background: #d6d6d6
+  .css_td
+    position: relative
+    &.active
+      background: #7f7f7f
+      color: #fff
+    &.customW1
+      width: 80px
+    .moreAbso
+      position: absolute
+      right: 0
+      bottom: 0
+      height: 25px
+      box-sizing: border-box
+
+    .moreClick
+      position: absolute
+      right: 0
+      bottom: 0
+      //width: 25px
+      height: 20px
+      //line-height: $defHt
+      border: 1px solid #888
+      background: $border-color
+      border-radius: 5px
+      padding: 4px 5px 0 5px
+      box-sizing: border-box
+      cursor: pointer
+  .icon-addDel
+    i
+      margin-top: 5px
+
+.horizTable-outer
+  overflow: auto
+  .css_table
+    +css_table($tableWidth: auto)
+    &.horizTable
+      table-layout: fixed
+      th,td
+        padding: 5px 10px
+      th
+        font-weight: 400
+      .text-right
+        th,td
+          text-align: right
+  &.table-middle
+    .css_table
+      margin: 0 auto
+  &.table-ht2x
+    .css_table
+      &.horizTable
+        th,td
+          font-size: $font-lg
+
+// main container
+.dashBoard-container
+  padding: 5px
+  clear: both
+  display: -ms-flexbox
+  display: -webkit-flex
+  display: flex
+  &.single-con
+    display: block
+    .l-Container
+      flex: 0
+  .l-Container, .r-Container
+    -webkit-flex: 1
+    -ms-flex: 1
+    flex: 1
+    float: left
+    background: #fff
+    border: 1px solid #eee
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.1), 0 1px 5px 0 rgba(0, 0, 0, 0.06)
+    padding: 10px
+    min-height: 400px
+    .title
+      font-size: $font-2x
+      margin: 10px auto 15px auto
+      //font-weight: 100
+      letter-spacing: 3px
+      padding-bottom: 10px
+      border-bottom: 1px solid #cccccc
+      //border-width: 70%
+      span
+        margin: auto auto auto -5px
+  .l-Container,.r-Container
+    .horizTable-outer
+      margin: 0 auto
+      text-align: center
+      .css_table
+        &.fullWt
+          width: 100%
+          th,td
+            padding: 10px 30px
+          &.padd_Sm
+            th,td
+              padding: 10px 15px
+        th,td
+          text-align: center
+          &.bg_yellow
+            background: $bg_yellow
+            //color: #fff
+          &.bg_red
+            background: $bg_red
+            //color: #fff
+        .css_td
+          font-size: $font-2x
+          .diff
+            margin: 10px auto auto auto
+            font-size: $font-12
+    $tipHt: 20px
+    .tip_box
+      margin: 10px 10px auto auto
+      line-height: $tipHt
+      %tipColor_set
+        width: $tipHt
+        height: $tipHt
+        margin-right: 5px
+      .tipYellow
+        @extend %tipColor_set
+        background: $bg_yellow
+      .tipRed
+        @extend %tipColor_set
+        background: $bg_red
+  .l-Container
+    width: 50%
+
+  .r-Container
+    margin-left: 1%
+    width: 45%
+    .chart
+      padding: 5px
+      text-align: center
+      width: 100%
+      height: 100%
+
+  // checkbox
+  .selectPlatform
+    .sub
+      font-size: $font-lg
+      margin-right: 10px
+      .txt
+        margin-left: 1px
+        font-weight: lighter
+    .l-selectPlat
+      float: left
+      width: 80%
+      line-height: $lineHeight34
+    .r-selectPlat
+      float: right
+      width: 20%
+      text-align: right
+
+// lineChart
+.lineChart
+  margin: auto
+  max-width: 100%
+  max-height: 100%
+  overflow: auto
+
+.axis path
+  fill: none
+  stroke-width: 0
+
+.axis line
+  fill: none
+  stroke: #ccc
+  stroke-width: 1
+  stroke-dasharray: 10 5
+
+.axis text,
+.volume text
+  text-transform: uppercase
+  //font-family: montserrat
+  font-size: .8rem
+  fill: #999
+
+
+.volume path
+  stroke-width: 2
+
+// end.lineChart
+.sub-block
+  background: #ececec
+  width: 45%
+  margin: auto 2% 2% auto
+  float: left
+  padding: 5px
+  vertical-align: middle
+  text-align: center
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.1), 0 1px 5px 0 rgba(0, 0, 0, 0.06)
+  &.bg-check
+    background: #E8EEDF
+  &.bg-cancel
+    background: #EED8DD
+    //border: 1px solid $red
+  &.bg-wait
+    background: #ced3ee
+    //border: 1px solid $gold
+  .circle
+    background: $green
+    padding: 5px
+    width: 50px
+    height: 50px
+    border-radius: 100px
+    vertical-align: middle
+    text-align: center
+    margin-top: 30px
+    &.circle-cancel
+      background: $red
+      img
+        margin: 7px
+    &.circle-wait
+      background: $purple
+      img
+        margin: 8px
+
+    img
+      width: 25px
+      height: auto
+      margin: 6px
+      vertical-align: middle
+      text-align: center
+  .content
+    letter-spacing: 1px
+    margin: auto auto auto 20px
+    .paltAnal
+      .paltName,.platNum
+        display: inline-block
+      .paltName
+        min-width: 60px
+        text-align: right
+
+.dataDetail
+  font-size: $font-2x
+  .diff
+    margin: 10px auto auto auto
+    font-size: $font-12
+
+
+.tooltip
+  position: relative
+  display: inline-block
+  border-bottom: 1px dotted black
+
+.tooltip .tooltiptext
+  visibility: hidden
+  width: 120px
+  background-color: black
+  color: #fff
+  text-align: center
+  border-radius: 6px
+  padding: 5px 0
+  /* Position the tooltip */
+  position: absolute
+  z-index: 1
+  top: -5px
+  right: 105%
+
+.tooltip:hover .tooltiptext
+  visibility: visible

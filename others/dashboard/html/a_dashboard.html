@@ -1,0 +1,910 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/2000/svg">
+<head>
+    <meta content="text/html" ; charset="UTF-8" http-equiv="Content-Type">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>DashBoard</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--<link rel="icon" href="../assets/images/#">-->
+
+
+    <!-- reset CSS -->
+    <link href="../assets/css/modules/reset.css" rel="stylesheet">
+
+    <!-- icon -->
+    <link href="../assets/css/font-awesome.css" rel="stylesheet">
+
+    <!-- range DatePicker -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+<article class="dashBoard-container">
+    <section class="l-Container">
+        <p class="title">
+            <i class="fa fa-calendar-check-o red"></i>
+            <span>當日訂單統計</span>
+        </p>
+        <div class="horizTable-outer center">
+            <table class="css_table fullWt">
+                <thead class="css_thead">
+                <tr class="css_tr">
+                    <th class="css_th"></th>
+                    <th class="css_th">有效</th>
+                    <th class="css_th">取消</th>
+                    <th class="css_th">未繳款</th>
+                </tr>
+                </thead>
+                <tbody class="css_tbody">
+                <tr class="css_tr">
+                    <td class="css_th" style="background-color: #E6CAFF;">官網</td>
+                    <td class="css_td">
+                        <span>65</span>
+                        <!--<i class="fa fa-caret-up green"></i>-->
+                        <!--<span class="diff">2%</span>-->
+                    </td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">4</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th" style="background-color: #FFC1E0;">Agoda</td>
+                    <td class="css_td">59
+                        <!--<i class="fa fa-caret-down red"></i>-->
+                        <!--<span class="diff">3%</span>-->
+                    </td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">4</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th" style="background-color: #ACD6FF;">Booking</td>
+                    <td class="css_td">48
+                        <!--<i class="fa fa-minus light-grey"></i>-->
+                        <!--<span class="diff">0%</span></td>-->
+                    <td class="css_td">4</td>
+                    <td class="css_td">4</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th" style="background-color: #FFBD9D;">Expedia</td>
+                    <td class="css_td">39</td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">4</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th" style="background-color: #1AFD9C;">CTP</td>
+                    <td class="css_td">39</td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">4</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th" style="background-color: #CDCD9A;">GTA</td>
+                    <td class="css_td">39</td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">4</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section class="r-Container">
+        <p class="title">
+            <i class="fa fa-pie-chart red"></i>
+            <span>當日圖表統計</span>
+        </p>
+        <div class="chart"></div>
+    </section>
+    <div class="clearfix"></div>
+</article>
+
+<article class="dashBoard-container">
+    <section class="l-Container">
+        <p class="title">
+            <i class="fa fa-calendar red"></i>
+            <span>區間住客統計</span>
+        </p>
+        <div class="rangePicker">
+            <div class="input-group">
+                <span class="input-group-addon" id="date-range-addon">
+                    <i class="fa fa-calendar"></i></span>
+                <input type="text" id="date-range-picker" class="form-control" placeholder="Date"
+                       aria-describedby="date-range-addon">
+            </div>
+        </div>
+        <div class="space-6"></div>
+
+        <div class="selectPlatform">
+            <div class="l-selectPlat">
+                <label class="sub">
+                    <input type="checkbox" name="slectPlatform" value="plat1">
+                    <span class="txt">官網</span>
+                </label>
+                <label class="sub">
+                    <input type="checkbox" name="slectPlatform" value="plat2">
+                    <span class="txt">Agoda</span>
+                </label>
+                <label class="sub">
+                    <input type="checkbox" name="slectPlatform" value="plat3">
+                    <span class="txt">Booking</span>
+                </label>
+                <label class="sub">
+                    <input type="checkbox" name="slectPlatform" value="plat4">
+                    <span class="txt">Expedia</span>
+                </label>
+            </div>
+            <div class="r-selectPlat">
+                <button class="btn btn-primary">Search</button>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+        <div class="space-6"></div>
+
+        <div class="horizTable-outer center">
+            <table class="css_table fullWt">
+                <thead class="css_thead">
+                <tr class="css_tr">
+                    <th class="css_th"></th>
+                    <th class="css_th">有效</th>
+                    <th class="css_th">取消</th>
+                    <th class="css_th">未繳款</th>
+                </tr>
+                </thead>
+                <tbody class="css_tbody">
+                <tr class="css_tr">
+                    <td class="css_th" style="background-color: #E6CAFF;">官網</td>
+                    <td class="css_td">65</td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">4</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th" style="background-color: #FFC1E0;">Agoda</td>
+                    <td class="css_td">59</td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">4</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th" style="background-color: #ACD6FF;">Booking</td>
+                    <td class="css_td">48</td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">4</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th" style="background-color: #FFBD9D;">Expedia</td>
+                    <td class="css_td">39</td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">4</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th" style="background-color: #1AFD9C;">CTP</td>
+                    <td class="css_td">39</td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">4</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th" style="background-color: #CDCD9A;">GTA</td>
+                    <td class="css_td">39</td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">4</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </section>
+    <section class="r-Container">
+        <p class="title">
+            <i class="fa fa-dashboard red"></i>
+            <span>區間圖表統計</span>
+        </p>
+        <div class="lineChart"></div>
+    </section>
+    <div class="clearfix"></div>
+</article>
+
+<article class="dashBoard-container">
+    <section class="l-Container">
+        <p class="title">
+            <i class="fa fa-calendar-check-o red"></i>
+            <span>七天庫存統計</span>
+        </p>
+        <div>
+
+            <i class="fa fa-chevron-left pull-left fa-lg"></i>
+            <i class="fa fa-chevron-right pull-right fa-lg"></i>
+
+        </div>
+        <div class="clearfix"></div>
+        <div class="space-6"></div>
+        <div class="horizTable-outer center lasrWeek" style="display: none;">
+            <table class="css_table fullWt">
+                <thead class="css_thead">
+                <tr class="css_tr">
+                    <th class="css_th wt-30" style="min-width: 150px;">七天庫存</th>
+                    <th class="css_th wt-10">12/14</th>
+                    <th class="css_th wt-10">12/15</th>
+                    <th class="css_th wt-10">12/16</th>
+                    <th class="css_th wt-10">12/17</th>
+                    <th class="css_th wt-10">12/18</th>
+                    <th class="css_th wt-10">12/19</th>
+                    <th class="css_th wt-10">12/20</th>
+                </tr>
+                </thead>
+                <tbody class="css_tbody">
+                <tr class="css_tr">
+                    <td class="css_th wt-30">雙人房</td>
+                    <td class="css_td wt-10">4</td>
+                    <td class="css_td wt-10">10</td>
+                    <td class="css_td wt-10">5</td>
+                    <td class="css_td wt-10">8</td>
+                    <td class="css_td wt-10">19</td>
+                    <td class="css_td wt-10">21</td>
+                    <td class="css_td wt-10">11</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th">單人房</td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">10</td>
+                    <td class="css_td">5</td>
+                    <td class="css_td">8</td>
+                    <td class="css_td">19</td>
+                    <td class="css_td">21</td>
+                    <td class="css_td">11</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th">豪華套房</td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">10</td>
+                    <td class="css_td">5</td>
+                    <td class="css_td">8</td>
+                    <td class="css_td">19</td>
+                    <td class="css_td">21</td>
+                    <td class="css_td">11</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th wt-30">雙人房</td>
+                    <td class="css_td wt-10">4</td>
+                    <td class="css_td wt-10">10</td>
+                    <td class="css_td wt-10">5</td>
+                    <td class="css_td wt-10">8</td>
+                    <td class="css_td wt-10">19</td>
+                    <td class="css_td wt-10">21</td>
+                    <td class="css_td wt-10">11</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th">單人房</td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">10</td>
+                    <td class="css_td">5</td>
+                    <td class="css_td">8</td>
+                    <td class="css_td">19</td>
+                    <td class="css_td">21</td>
+                    <td class="css_td">11</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th">豪華套房</td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">10</td>
+                    <td class="css_td">5</td>
+                    <td class="css_td">8</td>
+                    <td class="css_td">19</td>
+                    <td class="css_td">21</td>
+                    <td class="css_td">11</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="horizTable-outer center activeWeek">
+            <table class="css_table fullWt padd_Sm">
+                <thead class="css_thead">
+                <tr class="css_tr">
+                    <th class="css_th wt-30" style="min-width: 150px;">七天庫存</th>
+                    <th class="css_th wt-10">12/14</th>
+                    <th class="css_th wt-10">12/15</th>
+                    <th class="css_th wt-10">12/16</th>
+                    <th class="css_th wt-10">12/17</th>
+                    <th class="css_th wt-10">12/18</th>
+                    <th class="css_th wt-10">12/19</th>
+                    <th class="css_th wt-10">12/20</th>
+                </tr>
+                </thead>
+                <tbody class="css_tbody">
+                <tr class="css_tr">
+                    <td class="css_th wt-30">雙人房</td>
+                    <td class="css_td wt-10 bg_red">2</td>
+                    <td class="css_td wt-10">10</td>
+                    <td class="css_td wt-10">5</td>
+                    <td class="css_td wt-10">8</td>
+                    <td class="css_td wt-10">19</td>
+                    <td class="css_td wt-10">21</td>
+                    <td class="css_td wt-10">11</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th">單人房</td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">10</td>
+                    <td class="css_td">5</td>
+                    <td class="css_td">8</td>
+                    <td class="css_td">19</td>
+                    <td class="css_td">21</td>
+                    <td class="css_td">11</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th">豪華套房</td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">10</td>
+                    <td class="css_td">5</td>
+                    <td class="css_td bg_red">2</td>
+                    <td class="css_td">19</td>
+                    <td class="css_td">21</td>
+                    <td class="css_td">11</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th wt-30">雙人房</td>
+                    <td class="css_td wt-10">4</td>
+                    <td class="css_td wt-10">10</td>
+                    <td class="css_td wt-10">5</td>
+                    <td class="css_td wt-10">8</td>
+                    <td class="css_td wt-10">19</td>
+                    <td class="css_td wt-10">21</td>
+                    <td class="css_td wt-10">11</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th">單人房</td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">10</td>
+                    <td class="css_td">5</td>
+                    <td class="css_td">8</td>
+                    <td class="css_td">19</td>
+                    <td class="css_td">21</td>
+                    <td class="css_td">11</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th">豪華套房</td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">10</td>
+                    <td class="css_td">5</td>
+                    <td class="css_td">8</td>
+                    <td class="css_td">19</td>
+                    <td class="css_td">21</td>
+                    <td class="css_td">11</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="horizTable-outer center nextWeek" style="display: none;">
+            <table class="css_table fullWt">
+                <thead class="css_thead">
+                <tr class="css_tr">
+                    <th class="css_th wt-30" style="min-width: 150px;">七天庫存</th>
+                    <th class="css_th wt-10">12/14</th>
+                    <th class="css_th wt-10">12/15</th>
+                    <th class="css_th wt-10">12/16</th>
+                    <th class="css_th wt-10">12/17</th>
+                    <th class="css_th wt-10">12/18</th>
+                    <th class="css_th wt-10">12/19</th>
+                    <th class="css_th wt-10">12/20</th>
+                </tr>
+                </thead>
+                <tbody class="css_tbody">
+                <tr class="css_tr">
+                    <td class="css_th wt-30">雙人房</td>
+                    <td class="css_td wt-10">4</td>
+                    <td class="css_td wt-10">10</td>
+                    <td class="css_td wt-10">5</td>
+                    <td class="css_td wt-10">8</td>
+                    <td class="css_td wt-10">19</td>
+                    <td class="css_td wt-10">21</td>
+                    <td class="css_td wt-10">11</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th">單人房</td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">10</td>
+                    <td class="css_td">5</td>
+                    <td class="css_td">8</td>
+                    <td class="css_td">19</td>
+                    <td class="css_td">21</td>
+                    <td class="css_td">11</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th">豪華套房</td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">10</td>
+                    <td class="css_td">5</td>
+                    <td class="css_td">8</td>
+                    <td class="css_td">19</td>
+                    <td class="css_td">21</td>
+                    <td class="css_td">11</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th wt-30">雙人房</td>
+                    <td class="css_td wt-10">4</td>
+                    <td class="css_td wt-10">10</td>
+                    <td class="css_td wt-10">5</td>
+                    <td class="css_td wt-10">8</td>
+                    <td class="css_td wt-10">19</td>
+                    <td class="css_td wt-10">21</td>
+                    <td class="css_td wt-10">11</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th">單人房</td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">10</td>
+                    <td class="css_td">5</td>
+                    <td class="css_td">8</td>
+                    <td class="css_td">19</td>
+                    <td class="css_td">21</td>
+                    <td class="css_td">11</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th">豪華套房</td>
+                    <td class="css_td">4</td>
+                    <td class="css_td">10</td>
+                    <td class="css_td">5</td>
+                    <td class="css_td">8</td>
+                    <td class="css_td">19</td>
+                    <td class="css_td">21</td>
+                    <td class="css_td">11</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    <div class="tip_box">
+        <div class="tipRed pull-left"></div>
+        <p class=" pull-left">數量少於兩間</p>
+    </div>
+    </section>
+
+    <section class="r-Container">
+        <p class="title">
+            <i class="fa fa-calendar red"></i>
+            <span>類別即將下架</span>
+        </p>
+
+        <div class="horizTable-outer center">
+
+            <table class="css_table fullWt padd_Sm" style="margin-top: 20px;">
+                <thead class="css_thead">
+                <tr class="css_tr">
+                    <th class="css_th wt-50">類別</th>
+                    <th class="css_th wt-50">即將下架</th>
+                </tr>
+                </thead>
+                <tbody class="css_tbody">
+                <tr class="css_tr">
+                    <td class="css_th">一般訂房</td>
+                    <td class="css_td bg_yellow">2017/12/18</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th">早鳥優惠</td>
+                    <td class="css_td bg_red">2018/01/02</td>
+                </tr>
+                <tr class="css_tr">
+                    <td class="css_th">高鐵聯票</td>
+                    <td class="css_td">2018/03/02</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tip_box pull-left">
+            <div class="tipYellow pull-left"></div>
+            <p class="pull-left">15天內</p>
+        </div>
+        <div class="tip_box pull-left">
+            <div class="tipRed pull-left"></div>
+            <p class="pull-left">30天內</p>
+        </div>
+    </section>
+    <div class="clearfix"></div>
+</article>
+
+<div class="clearfix"></div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+
+
+<script src="../assets/js/d3/d3.v3.5.5.min.js"></script>
+<!--https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js-->
+<script src="../assets/js/d3/gDateStats.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#date-range-picker').daterangepicker({
+            "showDropdowns": true,
+            "ranges": {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            },
+            "alwaysShowCalendars": true,
+            "parentEl": "body",
+            "startDate": "11/08/2016",
+            "endDate": "11/14/2016"
+        }, function (start, end, label) {
+
+            $('#date-range-picker span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+            console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+        });
+
+        $('#date-range-picker').on('cancel.daterangepicker', function (ev, picker) {
+            $(this).val('');
+        });
+//
+//    var rContainer = $('.r-Container').height();
+//    var lContainer = $('.l-Container').height();
+//    alert(lContainer);
+//    if(rContainer>lContainer){
+//        $('.lContainer').css('height',rContainer);
+//    }else if(rContainer<lContainer){
+//        $('.rContainer').css('height',lContainer);
+//    }
+
+//    $(document).on('click','.')
+    })
+</script>
+
+<script type="text/javascript">
+    //    "use strict";
+    //datas
+    let datas = [{
+        date: 20151001,
+        官網: 54,
+        Agoda: 43,
+        Booking: 67,
+        Expedia: 64,
+        CTP: 33,
+        GTA: 19
+    }, {
+        date: 20151003,
+        官網: 65,
+        Agoda: 87,
+        Booking: 12,
+        Expedia: 54,
+        CTP: 25,
+        GTA: 26
+    }, {
+        date: 20151006,
+        官網: 12,
+        Agoda: 54,
+        Booking: 43,
+        Expedia: 62,
+        CTP: 55,
+        GTA: 45,
+    }, {
+        date: 20151009,
+        官網: 32,
+        Agoda: 43,
+        Booking: 67,
+        Expedia: 64,
+        CTP: 29,
+        GTA: 53
+    }, {
+        date: 20151012,
+        官網: 65,
+        Agoda: 87,
+        Booking: 12,
+        Expedia: 54,
+        CTP: 35,
+        GTA: 63
+    }, {
+        date: 20151015,
+        官網: 12,
+        Agoda: 54,
+        Booking: 43,
+        Expedia: 62,
+        CTP: 39,
+        GTA: 45
+    }]
+
+    //Selector (creation)
+    let items = d3.keys(datas[0]).filter(function (key) {
+        return key !== 'date';
+    });
+
+    //update main function
+    function change() {
+        //Datas compute
+        let selectedItems = d3.selectAll('.selected input');
+        let matrix = {}
+        selectedItems.each(function (elem) {
+            matrix[elem] = d3.select(this).property('checked');
+        });
+
+        let selectedDatas = datas.map(function (d) {
+            let selectedItem = {
+                date: d.date
+            }
+            items.forEach(function (item) {
+                if (matrix[item]) {
+                    selectedItem[item] = d[item];
+                }
+            });
+            return selectedItem;
+        });
+
+        //Maj update
+        let volumesTot = color.domain().map(function (name) {
+            return {
+                name: name,
+                values: selectedDatas.map(function (d) {
+                    return {
+                        date: d.date,
+                        volume: +d[name]
+                    };
+                })
+            };
+        });
+        let selectedKeys = d3.keys(selectedDatas[0]).filter(function (d) {
+            return d !== 'date'
+        });
+        let volumes = volumesTot.filter(function (d) {
+            return selectedKeys.filter(function (elem) {
+                return elem == d.name
+            }).length > 0;
+        });
+        y.domain([
+            d3.min(volumes, function (v) {
+                return d3.min(v.values, function (val) {
+                    return val.volume;
+                });
+            }),
+            d3.max(volumes, function (v) {
+                return d3.max(v.values, function (val) {
+                    return val.volume;
+                });
+            })
+        ]);
+
+        refreshYAxis();
+
+        let volume = svg.selectAll('.volume')
+            .data(volumes, function (d) {
+                console.log(d);
+                return d.name;
+            })
+            .attr('class', 'volume');
+
+        //update
+        volume.selectAll('path')
+            .transition()
+            .duration(500)
+            .ease('ease-out')
+            .attr('d', function (d) {
+                return lines(d.values);
+            });
+        volume.selectAll('text')
+            .transition()
+            .duration(500)
+            .ease('ease-out')
+            .attr('transform', function (d) {
+                return "translate(" + x(d.value.date) + "," + y(d.value.volume) + ")";
+            });
+
+        let enteredVolumes = volume
+            .enter().append('g')
+            .attr('class', 'volume');
+        enteredVolumes.attr('opacity', 0.00000001)
+            .transition()
+            .duration(500)
+            .attr('opacity', 1);
+        enteredVolumes.append('path')
+            .attr('class', 'line')
+            .attr('d', function (d) {
+                return lines(d.values);
+            })
+            .style('fill', 'none');
+        enteredVolumes.append('text')
+            .datum(function (d) {
+                return {
+                    name: d.name,
+                    value: d.values[d.values.length - 1]
+                };
+            })
+            .attr('transform', function (d) {
+                return "translate(" + x(d.value.date) + "," + y(d.value.volume) + ")";
+            })
+            .attr('x', 3)
+            .attr('dy', "0.35em")
+            .text(function (d) {
+                return d.name;
+            });
+
+        let vols = volume.selectAll('g');
+        volume.selectAll('path')
+            .attr('stroke', function (d, i, j) {
+                return color(vols[j].parentNode.__data__.name);
+            });
+
+        volume.exit()
+            .attr('opacity', 1)
+            .transition()
+            .duration(500)
+            .attr('opacity', .000001)
+            .remove();
+    }
+
+    //SVG
+    let margin = {
+            top: 20,
+            bottom: 20,
+            right: 40,
+            left: 40
+        },
+        lineWt = $(window).width() *0.4,
+        lineHt = 400;
+    //        width = 50 - margin.left - margin.right,
+    //        height = 300 - margin.top - margin.bottom;
+
+    let svg = d3.select('.lineChart')
+        .append('svg')
+        .attr({
+            width: lineWt + margin.left + margin.right,
+            height: lineHt + margin.top + margin.bottom
+        })
+        .append('g')
+        .attr('class', 'chart-container')
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    $(window).resize(function () {
+        lineWt = $(window).width() *0.43;
+        d3.select('.lineChart').select('svg').attr('width', lineWt)
+//        alert(lineWt);
+//        svg.attr({
+//                width: lineWt + margin.left + margin.right
+//            });
+    });
+    //scale
+    let x = d3.time.scale()
+            .range([0, lineWt]),
+        y = d3.scale.linear()
+            .range([lineHt, 0]);
+
+    //DateParser
+    let parseDate = d3.time.format('%Y%m%d').parse;
+
+    //colors
+    let color = d3.scale.ordinal()
+        .range(['#E6CAFF', '#FFC1E0', '#ACD6FF', '#FDBB7D', '#FFBD9D', '#1AFD9C', '#CDCD9A']);
+
+    color.domain(d3.keys(datas[0]).filter(function (key) {
+        return key !== 'date';
+    }));
+
+    //Axes
+    let xAxis = d3.svg.axis()
+        .scale(x)
+        .orient('bottom')
+        .ticks(5);
+    let yAxis = d3.svg.axis()
+        .scale(y)
+        .tickSize(lineWt)
+        .orient('right')
+        .ticks(5);
+
+    //lines
+    let lines = d3.svg.line()
+        .x(function (d) {
+            return x(d.date);
+        })
+        .y(function (d) {
+            return y(d.volume);
+        })
+        .defined(function (d) {
+            return d.volume;
+        })
+        .interpolate('linear');
+
+    //compile IT !
+    datas.forEach(function (d) {
+        d.date = parseDate('' + d.date);
+    });
+
+    var formEntered = d3.select('.lineChart').append('form')
+        .selectAll('span')
+        .data(items).enter()
+        .append('span')
+        .attr('class', 'selected ml-10');
+
+    formEntered.append('svg')
+        .attr('viewBox', '0 0 10 5')
+        .attr('height', 10)
+        .attr("class", 'label')
+        .append('rect')
+        .attr('x', 0)
+        .attr('y', 0)
+        .attr('width', 10)
+        .attr('height', 5)
+        .attr('fill', function (d) {
+            return color(d);
+        })
+        .attr('stroke-width', 0);
+
+    formEntered.append('input')
+        .attr('id', function (d, i) {
+            return 'selected-' + i;
+        })
+        .attr('onchange', 'change()')
+        .attr('type', 'checkbox')
+        .attr('name', 'selected')
+        .attr('value', function (d) {
+            return d;
+        })
+        .attr('checked', 'checked');
+
+    formEntered.append('label')
+        .attr('for', function (d, i) {
+            return 'selected-' + i;
+        })
+        .text(function (d) {
+            return d;
+        });
+
+    x.domain(d3.extent(datas, function (d) {
+        return d.date;
+    }));
+
+    svg.append("g")
+        .attr('class', 'x axis')
+        .attr('transform', 'translate(0,' + lineHt + ')')
+        .call(xAxis);
+
+    function refreshYAxis() {
+        if (svg.selectAll('.y.axis')[0].length < 1) {
+            svg.append('g')
+                .attr('class', 'y axis')
+                .call(yAxis)
+                .append('text')
+                .attr('transform', 'rotate(-90)')
+                .attr('y', -20)
+                .attr('dy', ".71em")
+                .style('text-anchor', 'end')
+                .text('區間統計');
+            svg.selectAll('.y.axis .tick text')
+                .attr('x', 4)
+                .attr('dy', -4);
+        } else {
+            svg.selectAll('.y.axis').transition().duration(500).call(yAxis)
+                .selectAll('.tick text')
+                .attr('x', 4)
+                .attr('dy', -4);
+        }
+    }
+
+    //compose IT
+    change();
+
+</script>
+</html>
+
+<!--todo-->
+<!--與bacchus內本身cdn結合-->
+<!--未解決問題-->
+<!--d3.js 控制顏色順序（成功:let colors = d3.scale.ordinal().range(['#E6CAFF', '#FFC1E0', '#ACD6FF', '#FFBD9D', '#95CACA', '#CDCD9A']); -->
+<!--d3.js 文本無法換行（筆記: 使用.append('<tspan>').attr('dy','10) -->
+<!--table 上升下降icon 動畫（暫先不用) -->
+<!--block 左右兩邊的大小相等
+    flex 技術：
+        解決文件：http://tomliu888.blogspot.tw/2015/09/div.html
+        參考文件//http://www.oxxostudio.tw/articles/201501/css-flexbox.html -->
+<!--d3.js rwd 問題：http://www.oxxostudio.tw/articles/201409/svg-23-viewpoint-viewBox.html
+        https://kuro.tw/posts/2015/12/20/use-d3js-to-create-responsive-histogram/-->
+
+<!--others pieChart: https://codepen.io/adeveloperdiary/pen/jbdMKr?q=pie+d3&limit=all&type=type-pens-->
+<!--range Picker:https://codepen.io/JingleWei/pen/LOvKRy?depth=everything&order=popularity&page=3&q=range+picker&show_forks=false-->
+<!--checkbox : https://codepen.io/Sambego/pen/zDLxe?q=checkbox&order=popularity&depth=everything&show_forks=false-->
+<!--lineChart: https://codepen.io/pewho/pen/Rabdrb?editors=0010-->

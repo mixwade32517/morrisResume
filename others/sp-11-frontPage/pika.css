@@ -1,0 +1,164 @@
+@import url(https://fonts.googleapis.com/css?family=Italianno);
+html, body {
+  margin: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+
+.red-pixels,
+.black-pixels,
+.brown-pixels,
+.dark-brown-pixels,
+.white-pixels,
+.yellow-pixels,
+.green-pixels,
+.christmas-pixels {
+  height: 18.75em;
+  width: 18.75em;
+  position: absolute; }
+  .red-pixels div,
+  .black-pixels div,
+  .brown-pixels div,
+  .dark-brown-pixels div,
+  .white-pixels div,
+  .yellow-pixels div,
+  .green-pixels div,
+  .christmas-pixels div {
+    position: absolute;
+    width: 1.25em;
+    height: 1.25em; }
+
+.overlay {
+  z-index: 20;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  position: absolute; }
+
+.wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  display: none;
+  background-color: #fff;
+  z-index: 100; }
+
+/* =MAIN CONTAINER */
+/* =BLACK SQUARES */
+.square {
+  width: 12.5%;
+  height: 25%;
+  position: absolute;
+  background-color: black;
+  opacity: 0;
+  z-index: 100;
+  display: none; }
+  .square.square01 {
+    top: 0;
+    left: 0; }
+  .square.square02 {
+    top: 0;
+    left: 12.5%; }
+  .square.square03 {
+    top: 0;
+    left: 25%; }
+  .square.square04 {
+    top: 0;
+    left: 37.5%; }
+  .square.square05 {
+    top: 0;
+    left: 50%; }
+  .square.square06 {
+    top: 0;
+    left: 62.5%; }
+  .square.square07 {
+    top: 0;
+    left: 75%; }
+  .square.square08 {
+    top: 0;
+    left: 87.5%; }
+  .square.square09 {
+    top: 0;
+    left: 100%; }
+  .square.square10 {
+    top: 25%;
+    left: 0; }
+  .square.square11 {
+    top: 25%;
+    left: 12.5%; }
+  .square.square12 {
+    top: 25%;
+    left: 25%; }
+  .square.square13 {
+    top: 25%;
+    left: 37.5%; }
+  .square.square14 {
+    top: 25%;
+    left: 50%; }
+  .square.square15 {
+    top: 25%;
+    left: 62.5%; }
+  .square.square16 {
+    top: 25%;
+    left: 75%; }
+  .square.square17 {
+    top: 25%;
+    left: 87.5%; }
+  .square.square18 {
+    top: 25%;
+    left: 100%; }
+  .square.square19 {
+    top: 50%;
+    left: 0; }
+  .square.square20 {
+    top: 50%;
+    left: 12.5%; }
+  .square.square21 {
+    top: 50%;
+    left: 25%; }
+  .square.square22 {
+    top: 50%;
+    left: 37.5%; }
+  .square.square23 {
+    top: 50%;
+    left: 50%; }
+  .square.square24 {
+    top: 50%;
+    left: 62.5%; }
+  .square.square25 {
+    top: 50%;
+    left: 75%; }
+  .square.square26 {
+    top: 50%;
+    left: 87.5%; }
+  .square.square27 {
+    top: 50%;
+    left: 100%; }
+  .square.square28 {
+    top: 75%;
+    left: 0; }
+  .square.square29 {
+    top: 75%;
+    left: 12.5%; }
+  .square.square30 {
+    top: 75%;
+    left: 25%; }
+  .square.square31 {
+    top: 75%;
+    left: 37.5%; }
+  .square.square32 {
+    top: 75%;
+    left: 50%; }
+  .square.square33 {
+    top: 75%;
+    left: 62.5%; }
+  .square.square34 {
+    top: 75%;
+    left: 75%; }
+  .square.square35 {
+    top: 75%;
+    left: 87.5%; }
+  .square.square36 {
+    top: 75%;
+    left: 100%; }
+
+/* iPads (portrait) */
